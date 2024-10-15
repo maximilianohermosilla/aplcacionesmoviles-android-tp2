@@ -1,7 +1,7 @@
 package com.example.vistaweb
 
 import android.app.Activity
-import android.app.Fragment
+import androidx.fragment.app.Fragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -26,7 +26,7 @@ class UrlFragment: Fragment() {
         var btn: Button = view.findViewById(R.id.btn_ir);
 
         btn.setOnClickListener{
-            onClick(view);
+            buttonClicked(view);
         }
 
         return view
@@ -49,8 +49,9 @@ class UrlFragment: Fragment() {
     }
 
 
-    fun onClick(view: View) {
+    fun buttonClicked(view: View) {
         var edit: EditText = view.findViewById(R.id.e_url);
-        activityCallback?.onButtonClick(edit.getText().toString());
+        var editTexto = edit.getText().toString();
+        activityCallback?.onButtonClick(editTexto);
     }
 }

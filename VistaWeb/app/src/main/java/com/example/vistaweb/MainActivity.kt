@@ -13,9 +13,14 @@ class MainActivity : FragmentActivity(), MiListener {
     }
 
     override fun onButtonClick(text: String?) {
-        val vistaFragment =
-            getSupportFragmentManager().findFragmentById(R.id.vista_fragment) as VistaFragment
-
-        vistaFragment.verPagina(text)
+        try {
+            val vistaFragment = getSupportFragmentManager().findFragmentById(R.id.vista_fragment);
+            (vistaFragment as VistaFragment).verPagina(text)
+        }
+        catch (e: ClassCastException) {
+            throw ClassCastException(
+                e.message
+            )
+        }
     }
 }
